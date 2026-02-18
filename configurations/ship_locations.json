@@ -3,71 +3,71 @@
         {
             "city_name": "Los Angeles",
             "coordinates": {
-                "latitude": 40.7128,
-                "longitude": -74.0060
+                "latitude": 34.0565,
+                "longitude": -118.2488
             }
         },
         {
             "city_name": "New York City",
             "coordinates": {
-                "latitude": 32.7228,
-                "longitude": -98.0060
+                "latitude": 40.7089,
+                "longitude": -74.0100
             }
         },
         {
             "city_name": "Toronto",
             "coordinates": {
-                "latitude": 33.43,
-                "longitude": 64.4444
+                "latitude": 43.6506,
+                "longitude": -79.3858
             }
         },
         {
             "city_name": "London",
             "coordinates": {
-                "latitude": 37.7722,
-                "longitude": 34.0060
+                "latitude": 42.9817,
+                "longitude": -81.2482
             }
         },
         {
             "city_name": "Paris",
             "coordinates": {
-                "latitude": 23.9028,
-                "longitude": 64.0460
+                "latitude": 48.8606,
+                "longitude": 2.3431
             }
         },
         {
             "city_name": "Berlin",
             "coordinates": {
-                "latitude": 49.1238,
-                "longitude": 14.3369
+                "latitude": 52.5160,
+                "longitude": 13.3967
             }
         },
          {
             "city_name": "Rome",
             "coordinates": {
-                "latitude": 94.2833,
-                "longitude": 84.0960
+                "latitude": 41.8878,
+                "longitude": 12.4842
             }
         },
         {
             "city_name": "Dubai",
             "coordinates": {
-                "latitude": 11.2812,
-                "longitude": -53.9960
+                "latitude": 25.1924,
+                "longitude": 55.2778
             }
         },
         {
             "city_name": "Tokyo",
             "coordinates": {
-                "latitude": 82.2834,
-                "longitude": -34.9363
+                "latitude": 35.6776,
+                "longitude": 139.7667
             }
         },
         {
             "city_name": "Sydney",
             "coordinates": {
-                "latitude": 18.2667,
-                "longitude": -12.7762
+                "latitude": -33.8622,
+                "longitude": 151.2093
             }
         }
     ]
