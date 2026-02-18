@@ -1,0 +1,41 @@
+JSON. files that will contain the settings for specific data in program
+
+- Cannot be changed by user
+- Same for every instance of the user running the program
+
+ex: 
+- Rules of predetermined 10 fixed locations
+- The Pricing/shipping rules for a package creation 
+
+SAVED RULES OF data
+
+Preliminary list of 10 Shipping Locations:
+- Los Angeles, USA
+- New York City, USA
+- Toronto, CAN
+- London, ENG
+- Paris, FRA
+- Berlin, GER
+- Rome, ITA
+- Dubai, UAE
+- Tokyo, JAP
+- Sydney, AUS
+
+Other possible locations (expansion or replacement):
+- Vancouver, CAN
+- São Paulo, BRA
+- Madrid, SPA
+- Cairo, EGY
+- Istanbul, TUR
+- Cape Town, SoAFR
+- Mumbai, IND
+- Beijing, CHI
+- Bangkok, THAI
+- Jakarta, INDO
+- Mexico City, MEX
+- Bogota, COL
+- Santiago, Chile
+- Lagos, Nigeria
+- St. Petersburg, RUS
+- Manila, PHI
+
