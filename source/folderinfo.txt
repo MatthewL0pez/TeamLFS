@@ -1,0 +1,6 @@
+Files that will contain the real project implementation for running
+
+ex:
+- Other folders with their own specific implementations 
+
+THIS IS WHERE WE WILL COMPILE THE PROJECT 

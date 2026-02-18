@@ -1,0 +1,10 @@
+JSON. files that will store/or load user info 
+
+- Can be changed by the user 
+- Different for every instance the user loads the program 
+
+ex: 
+- Store users buissness info
+- Save the shipmpent/billing history
+
+SAVED data RECORDS

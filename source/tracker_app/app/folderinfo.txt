@@ -1,0 +1,6 @@
+Files that will hold GLOBAL app based functions that will opperate the whole time on the programs execution
+
+ex:
+- The state of the app, which account is logged in?
+- Checks validations of specific functions, is this email correct?
+

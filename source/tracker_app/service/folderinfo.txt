@@ -1,0 +1,7 @@
+Files that will do the WORK of calculation or updating depending on work and fucntion
+
+ex:
+- Buissness service: Create, delete, list buissness
+- Shipping Math service: calculate distance, calculate time, caluclate cost
+- etc...
+

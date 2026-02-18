@@ -1,0 +1,8 @@
+THE MAIN variables/things of the programs we use for each subfoler
+
+ex:
+- Id generation
+- Invoice creation 
+- package status
+- money, weight, and distance value objects for calculation
+

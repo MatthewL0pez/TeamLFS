@@ -1,0 +1,8 @@
+Menus to call for each specific app functions with input and output
+
+ex:
+- Menus for, meain menu, shipping menu,etc..
+- asking for input of phone number
+- print out a table of invoice
+
+

@@ -1,0 +1,7 @@
+folder that will contain the functions meant to save the information of user onto a JSON file to be loaded or unloaded
+
+ex:
+- Store shipments into JSON file
+- Buissness information store into a JSON file
+- etc..
+
