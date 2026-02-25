@@ -1,8 +1,5 @@
-THE MAIN variables/things of the programs we use for each subfoler
+models package:
 
-ex:
-- Id generation
-- Invoice creation 
-- package status
-- money, weight, and distance value objects for calculation
+Data objects used by the app (Business, User, Package).
+
 

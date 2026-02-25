@@ -1,0 +1,17 @@
+#This file tells Git which files/folders not to upload.
+#These are auto-generated cache pythong files that would just clutter the repo.
+
+#ignores the cache directories
+__pycache__/
+
+#ignores the compiled python artifacts
+*.pyc
+*.pyo
+*.pyd
+
+# ignores the local virtual enviornments
+.venv/
+venv/
+
+# os junk files 
+.DS_Store 

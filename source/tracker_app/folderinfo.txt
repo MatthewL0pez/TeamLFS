@@ -1,2 +1,3 @@
-main package for your progam, Where the main.py and init.py will go
-during compilation of the project
+tracker_app package:
+
+This folder holds the main application code (models, services, storage, UI).

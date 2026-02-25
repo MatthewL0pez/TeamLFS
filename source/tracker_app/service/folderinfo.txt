@@ -1,7 +1,5 @@
-Files that will do the WORK of calculation or updating depending on work and fucntion
+service package:
 
-ex:
-- Buissness service: Create, delete, list buissness
-- Shipping Math service: calculate distance, calculate time, caluclate cost
-- etc...
+Logical or helper functions like location lookup, distance, billing, etc..
+
 

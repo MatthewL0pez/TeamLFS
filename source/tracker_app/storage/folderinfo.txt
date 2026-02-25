@@ -1,7 +1,5 @@
-folder that will contain the functions meant to save the information of user onto a JSON file to be loaded or unloaded
+storage package:
 
-ex:
-- Store shipments into JSON file
-- Buissness information store into a JSON file
-- etc..
+Saving/loading data (JSON files) so the app remembers info.
+
 
