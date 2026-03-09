@@ -1,3 +1,6 @@
+import json
+import os
+
 # 1.) starts by...          Reads from the JSON file and turns it into a pythong list/dict
 # 2.) then...               writes the JSON back into a file 
 # 3.) file doesnt exist...  returns value to handle crashing
@@ -5,16 +8,16 @@
 # https://docs.python.org/3/library/os.html USED IN IMPLEMENTATION: import os
 # https://docs.python.org/3/library/json.html USED IN IMPLEMENTATION: import json
 
-def read_jsonFILE(path, value) # read JSON 
+def read_json(path, default_value): # read JSON 
     if not os.path.exists(path): # if the file doesnt exist, return the value
-        return value
+        return default_value
     with open(path, "r", encoding="utf-8") as f: #open path in reading mode and tells pythong to interpret the 
                                                  # text in UTF-8
         return json.load(f)     #load data in file f
                                 # EXAMPLE: JSON         = {"city": "LA", "count": 3}
                                 #          json.load(f) = {"city": "LA", "count": 3} PYTHON DIRECTORY NOW 
 
-def write_jsonFILE(path, data): #write JSON
+def write_json(path, data): #write JSON
     folder = os.path.dirname(path) # creates folders
 
     if folder and not os.path.exists(folder): 

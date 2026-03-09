@@ -13,33 +13,29 @@
 # **business_id**    <<<<<< NOTE
 # the storage layer will assign business_id = 1, 2, 3, ... to be pulled from
 
-class BuissnessProfile:         # profile of buissness 
+class BusinessProfile:
+    def __init__(self, business_name, location_city, business_id=None):
+        self.business_id = business_id
+        self.business_name = business_name
+        self.location_city = location_city
 
-    def __init__(self, buissness_name, location_city, buissness_id = None):
-        self.buissness_id = buissness_id        #(1, 2, 3, ...)
-        self.buisness_name = buissness_name     # Buisness name string
-        self.location_city = location_city      # city from locations.json
-
-    def dictionary_conversion(self): # takes the JSON into a dictionary since it cant be 
-                                     #saved as a python object
+    def to_dict(self):
         return {
             "business_id": self.business_id,
             "business_name": self.business_name,
             "location_city": self.location_city
         }
 
-    @staticmethod # function doesnt need a self input argument <<
-    
-    def from_dictionary(d):         # turns the JSON dicitionaries into a BuissnessProfile class object
-        return {
-            business_name = d.get("business_name", ""),
-            location_city = d.get("location_city", ""),
-            business_id = d.get("business_id", None)
-        }     
-    
     @staticmethod
+    def from_dict(d):
+        return BusinessProfile(
+            business_name=d.get("business_name", ""),
+            location_city=d.get("location_city", ""),
+            business_id=d.get("business_id", None)
+        )
 
-    def is_location_allowed(city_name, allowed_city_names):    #checks if the city location is allowed 
+    @staticmethod
+    def is_location_allowed(city_name, allowed_city_names):
         return city_name in allowed_city_names
         
     # Example implmentation: ^^^^^

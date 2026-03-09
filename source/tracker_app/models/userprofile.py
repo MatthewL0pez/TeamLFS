@@ -11,30 +11,44 @@
 # - email, phone
 # - billing_info    (kept as simple text for now since I dont know what billing_info should be)
 
-class UserProfile: 
-    def __init__(self, first_name, last_name, email, phone, billing_info, user_id = None):
-        self.user_id = user_id          # ID set to None
-        self.business_id = business_id  # buissness which user belongs to
+class UserProfile:
+    def __init__(self, first_name, last_name, email, phone, billing_info, business_id, user_id=None):
+        self.user_id = user_id
+        self.business_id = business_id
+
         self.first_name = first_name
         self.last_name = last_name
-        self.email = email              # user contact info
+
+        self.email = email
         self.phone = phone
 
-        self.billing_info = billing_info # SIMPLE SO FAR just implemented as a string <<<<
+        # keeping billing_info as a simple string for now
+        self.billing_info = billing_info    # Billing info will be used as conditional to check: (if invalid/no billing info -> do not allow package creation)
 
-    @staticmethod # function doesnt need a self input argument <<
-    def from_dictionary(d):
-        return UserProfile(     # turns the JSON dicitionaries into a UserProfile class object
-            first_name =d.get("first_name", ""),
-            last_name = d.get("last_name", ""),
-            email = d.get("email", ""),
-            phone = d.get("phone", ""),
-            billing_info = d.get("billing_info", ""),
-            business_id = d.get("business_id", None),
-            user_id =d .get("user_id", None)
+    def to_dict(self):
+        return {
+            "user_id": self.user_id,
+            "business_id": self.business_id,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "email": self.email,
+            "phone": self.phone,
+            "billing_info": self.billing_info
+        }
+
+    @staticmethod
+    def from_dict(d):
+        return UserProfile(
+            first_name=d.get("first_name", ""),
+            last_name=d.get("last_name", ""),
+            email=d.get("email", ""),
+            phone=d.get("phone", ""),
+            billing_info=d.get("billing_info", ""),
+            business_id=d.get("business_id", None),
+            user_id=d.get("user_id", None)
         )
-    
-     def belongs_to_business(self, business_id): #checks if user belongs to a business 
+
+    def belongs_to_business(self, business_id):
         return self.business_id == business_id
 
 
