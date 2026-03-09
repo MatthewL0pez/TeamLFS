@@ -1,0 +1,10 @@
+{
+  "next_business_id": 2,
+  "businesses": [
+    {
+      "business_id": 1,
+      "business_name": "Test Biz",
+      "location_city": "Long Beach"
+    }
+  ]
+}

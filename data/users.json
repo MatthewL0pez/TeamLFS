@@ -1,0 +1,14 @@
+{
+  "next_user_id": 2,
+  "users": [
+    {
+      "user_id": 1,
+      "business_id": 1,
+      "first_name": "Matt",
+      "last_name": "Lopez",
+      "email": "m@email.com",
+      "phone": "555",
+      "billing_info": "VISA 1111"
+    }
+  ]
+}
