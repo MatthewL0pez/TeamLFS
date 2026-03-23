@@ -62,6 +62,25 @@ def get_city_coords(city_name):
 
     return None
 
+def get_location_dict_for_math():
+    """
+    Returns a flat dictionary: {"City Name": (lat, lon)}
+    This is specifically for the DistanceService.
+    """
+    data = load_locations()
+    locations_map = {}
+    
+    for loc in data.get("locations", []):
+        name = loc.get("city_name")
+        coords = loc.get("coordinates", {})
+        lat = coords.get("latitude")
+        lon = coords.get("longitude")
+        
+        if name and lat is not None and lon is not None:
+            locations_map[name] = (lat, lon)
+            
+    return locations_map
+
 # Example implementation:
 
 # from tracker_app.service.location_service import list_city_names, get_city_coords

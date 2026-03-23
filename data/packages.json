@@ -1,0 +1,16 @@
+{
+  "next_package_id": 2,
+  "packages": [
+    {
+      "package_id": 1,
+      "business_id": 1,
+      "user_id": 1,
+      "description": "Electronics Repair Kit",
+      "source_city": "Los Angeles",
+      "destination_city": "Tokyo",
+      "weight": 2.5,
+      "shipping_cost": 155.40,
+      "current_location": "Processing"
+    }
+  ]
+}

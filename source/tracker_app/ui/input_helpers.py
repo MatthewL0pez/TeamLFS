@@ -31,6 +31,28 @@ def ask_int(prompt, min_value=None, max_value=None): # Keeps asking until user t
 
         return num
 
+def ask_float(prompt, min_value=None, max_value=None):
+    """Keeps asking until user types a valid decimal number (float)."""
+    while True:
+        text = input(prompt).strip()
+
+        try:
+            # We use float() here because it handles decimals and negative signs
+            num = float(text)
+        except ValueError:
+            print("Please enter a valid number (e.g., 1.5 or 10).")
+            continue
+
+        if min_value is not None and num < min_value:
+            print(f"Value must be at least {min_value}.")
+            continue
+
+        if max_value is not None and num > max_value:
+            print(f"Value must be at most {max_value}.")
+            continue
+
+        return num
+
 def choose_from_list(title, options): # Displays numbered options and returns the chosen item (string)
                                       # options = ["Long Beach", "Los Angeles", ...]
     if len(options) == 0:
