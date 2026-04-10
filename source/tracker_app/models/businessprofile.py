@@ -1,66 +1,72 @@
-# Creates a BUSINESSPROFILE object that represents a buissness profile
+# Creates a BusinessProfile object that represents a business profile.
 
-
-# BusinessProfile example:
-# 
-# This file creates a "BusinessProfile" class.
-# A BusinessProfile is data we store about a business:
-
-# - business_id      (number assigned by storage later)
-# - business_name    (buissness name chosen)
-# - location_city    (city from data/locations.json)
-#
-# **business_id**    <<<<<< NOTE
-# the storage layer will assign business_id = 1, 2, 3, ... to be pulled from
 
 class BusinessProfile:
-    def __init__(self, business_name, location_city, business_id=None):
+    def __init__(
+        self,
+        business_name,
+        location_city,
+        business_id=None,
+        latitude=None,
+        longitude=None,
+    ):
         self.business_id = business_id
         self.business_name = business_name
         self.location_city = location_city
+        self.latitude = latitude
+        self.longitude = longitude
+
+        self.employees = []
+        self.sections = {}
+        self.total_packages = 0
 
     def to_dict(self):
         return {
             "business_id": self.business_id,
             "business_name": self.business_name,
-            "location_city": self.location_city
+            "location_city": self.location_city,
+            "latitude": self.latitude,
+            "longitude": self.longitude,
+            "employees": self.employees,
+            "sections": self.sections,
+            "total_packages": self.total_packages,
         }
 
     @staticmethod
-    def from_dict(d):
-        return BusinessProfile(
-            business_name=d.get("business_name", ""),
-            location_city=d.get("location_city", ""),
-            business_id=d.get("business_id", None)
+    def from_dict(data):
+        business = BusinessProfile(
+            business_name=data.get("business_name", ""),
+            location_city=data.get("location_city", ""),
+            business_id=data.get("business_id"),
+            latitude=data.get("latitude"),
+            longitude=data.get("longitude"),
         )
 
-    @staticmethod
-    def is_location_allowed(city_name, allowed_city_names):
-        return city_name in allowed_city_names
-        
-    # Example implmentation: ^^^^^
-    # allowed = location_service.list_city_names()
-    # if not BusinessProfile.is_location_allowed(city, allowed):
-    #     print("Pick a valid city.")
+        employees = data.get("employees", [])
+        sections = data.get("sections", {})
+        total_packages = data.get("total_packages", 0)
 
-#  Example file use:
+        business.employees = employees if isinstance(employees, list) else []
+        business.sections = sections if isinstance(sections, dict) else {}
+        business.total_packages = total_packages if isinstance(total_packages, int) else 0
 
-# 1. UI will show city options from locations.json like:
+        return business
 
-#   cities = location_service.list_city_names()
-#   print(cities)
+    def add_employee(self, user_id):
+        if user_id not in self.employees:
+            self.employees.append(user_id)
 
+    def add_section(self, section_name):
+        if section_name not in self.sections:
+            self.sections[section_name] = []
 
-# 2.  User chooses one city from json. and create the business:
-#     bizz = BusinessProfile("Name of the Business", "New York City")
-#
-# 3. Storage assigns Business ID later:
-#     biz.business_id = 1
-#
-# 4. Save it to json.
-#     json_ready = biz.to_dict() 
-#
-# Logging out should NOT erase biz.location_city.
-# Instead, the app_state should clear the currently selected business:
-#   state["active_business_id"] = None
-# so the business/location is not selected anymore.
+    def assign_package(self, section_name, package_id):
+        if section_name in self.sections:
+            self.sections[section_name].append(package_id)
+            self.total_packages += 1
+
+    def move_package(self, from_section, to_section, package_id):
+        if from_section in self.sections and to_section in self.sections:
+            if package_id in self.sections[from_section]:
+                self.sections[from_section].remove(package_id)
+                self.sections[to_section].append(package_id)

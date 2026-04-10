@@ -3,16 +3,24 @@
 # Helper functions for UI menus to stay simple
 # Instead of repeating input-checking
 
+def _read_input(prompt):
+    try:
+        return input(prompt)
+    except (EOFError, KeyboardInterrupt):
+        print("\nExiting.")
+        raise SystemExit(0)
+
+
 def ask_non_empty(prompt):  # Keeps asking until the user types something non-empty
     while True:
-        text = input(prompt).strip()
+        text = _read_input(prompt).strip()
         if text != "":
             return text
         print("Please type something (cannot be blank).")
 
 def ask_int(prompt, min_value=None, max_value=None): # Keeps asking until user types a valid integer 
     while True:
-        text = input(prompt).strip()
+        text = _read_input(prompt).strip()
 
         # must be digits (no decimals)
         if not text.isdigit():
@@ -34,7 +42,7 @@ def ask_int(prompt, min_value=None, max_value=None): # Keeps asking until user t
 def ask_float(prompt, min_value=None, max_value=None):
     """Keeps asking until user types a valid decimal number (float)."""
     while True:
-        text = input(prompt).strip()
+        text = _read_input(prompt).strip()
 
         try:
             # We use float() here because it handles decimals and negative signs
@@ -68,4 +76,4 @@ def choose_from_list(title, options): # Displays numbered options and returns th
 
 
 def pause(): # pause so user can read output before continuing
-    input("\nPress Enter to continue...")
+    _read_input("\nPress Enter to continue...")

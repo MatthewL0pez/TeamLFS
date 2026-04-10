@@ -9,13 +9,14 @@ class PricingService:
     @staticmethod
     def calculate_shipping_cost(distance_km, weight_kg):
         """ Calculates the total price of shipping based on distance and weight. """
-        if distance_km is None or distance_km < 0:
-            raise ValueError("Invalid distance provided for pricing.")
+        if distance_km is None:
+            raise ValueError("Distance cannot be None. Check city coordinates.")
         
+        billable_distance = max(distance_km, 0.1)
         if weight_kg <= 0:
             raise ValueError("Package weight must be greater than zero.")
 
-        distance_cost = distance_km * PricingService.RATE_PER_KM
+        distance_cost = billable_distance * PricingService.RATE_PER_KM
         weight_cost = weight_kg * PricingService.RATE_PER_KG
         
         total_price = PricingService.BASE_SHIPPING_FEE + distance_cost + weight_cost

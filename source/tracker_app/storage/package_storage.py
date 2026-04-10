@@ -23,7 +23,7 @@ def get_packages_by_user(user_id):
     db = _load_db()
     return [Package.from_dict(p) for p in db["packages"] if p.get("user_id") == user_id]
 
-def create_package(business_id, user_id, source, destination, weight, description, cost):
+def create_package(business_id, user_id, source, destination, weight, description, cost, d_lat=None, d_lon=None):
     db = _load_db()
     new_id = db["next_package_id"]
 
@@ -35,7 +35,9 @@ def create_package(business_id, user_id, source, destination, weight, descriptio
         weight=weight,
         description=description,
         shipping_cost=cost,
-        package_id=new_id
+        package_id=new_id,
+        dest_lat=d_lat,
+        dest_lon=d_lon
     )
 
     db["packages"].append(pkg.to_dict())

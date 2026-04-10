@@ -1,15 +1,13 @@
 import math
 
-
 class DistanceService:
-    EARTH_RADIUS_KM = 6371  # Earth's radius in km
+    EARTH_RADIUS_KM = 6371
 
     @staticmethod
     def haversine(coord1, coord2):
         lat1, lon1 = coord1
         lat2, lon2 = coord2
 
-        # Convert to radians
         lat1 = math.radians(lat1)
         lon1 = math.radians(lon1)
         lat2 = math.radians(lat2)
@@ -29,7 +27,10 @@ class DistanceService:
         return DistanceService.EARTH_RADIUS_KM * c
 
     @staticmethod
-    def get_distance(city1_name, city2_name, locations_dict):
-        coord1 = locations_dict[city1_name]
-        coord2 = locations_dict[city2_name]
-        return DistanceService.haversine(coord1, coord2)
+    def get_distance(city1, city2, locations_dict):
+        """Calculate distance in km between two city names using a {city: (lat, lon)} dict."""
+        coords1 = locations_dict.get(city1)
+        coords2 = locations_dict.get(city2)
+        if coords1 is None or coords2 is None:
+            return None
+        return DistanceService.haversine(coords1, coords2)

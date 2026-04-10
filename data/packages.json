@@ -1,5 +1,5 @@
 {
-  "next_package_id": 2,
+  "next_package_id": 3,
   "packages": [
     {
       "package_id": 1,
@@ -9,7 +9,18 @@
       "source_city": "Los Angeles",
       "destination_city": "Tokyo",
       "weight": 2.5,
-      "shipping_cost": 155.40,
+      "shipping_cost": 155.4,
+      "current_location": "Processing"
+    },
+    {
+      "package_id": 2,
+      "business_id": 11,
+      "user_id": 2,
+      "source_city": "Los Angeles",
+      "destination_city": "Tokyo",
+      "weight": 4.5,
+      "description": "Presentation Sample Package",
+      "shipping_cost": 91.72,
       "current_location": "Processing"
     }
   ]

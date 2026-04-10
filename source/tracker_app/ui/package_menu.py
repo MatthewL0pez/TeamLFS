@@ -28,29 +28,60 @@ def _register_package():
     biz = get_business_by_id(biz_id)
     print(f"\nRegistering Package for {biz.business_name}")
     
-    # 1. Destination Selection
+    # 1. Destination Selection with Custom Option
     cities = list_city_names()
-    dest = choose_from_list(f"Shipping from {biz.location_city}. Choose destination:", cities)
+    options = cities + ["ENTER CUSTOM COORDINATES"]
+    choice = choose_from_list(f"Shipping from {biz.location_city}. Choose destination:", options)
     
-    if dest is None: return
+    if choice is None: return
+
+    dest_lat, dest_lon = None, None
+    
+    if choice == "ENTER CUSTOM COORDINATES":
+        dest_city = ask_non_empty("Enter destination city name/address: ")
+        dest_lat = ask_float("Enter Destination Latitude: ", min_value=-90, max_value=90)
+        dest_lon = ask_float("Enter Destination Longitude: ", min_value=-180, max_value=180)
+        dest_coords = (dest_lat, dest_lon)
+    else:
+        dest_city = choice
+        locations = get_location_dict_for_math()
+        dest_coords = locations.get(dest_city)
 
     # 2. Package Details
     desc = ask_non_empty("Package description: ")
     weight = ask_float("Package weight (kg): ", min_value=0.1)
 
-    # 3. Calculation Logic
-    locations = get_location_dict_for_math()
-    dist = DistanceService.get_distance(biz.location_city, dest, locations)
-    cost = PricingService.calculate_shipping_cost(dist, weight)
+    # 3. UPDATED CALCULATION LOGIC
+    # Get coordinates for the source from the BUSINESS object itself
+    # This uses the latitude/longitude saved in businesses.json
+    source_coords = (biz.latitude, biz.longitude)
 
-    print(f"\nLOGISTICS QUOTE:")
-    print(f"Distance: {dist:.2f} km")
-    print(f"Total Shipping Cost: ${cost:.2f}")
-    confirm = ask_non_empty("Confirm registration? (y/n): ").lower()
+    # Safety check: if business has no coords, try a fallback to the city name
+    if source_coords[0] is None or source_coords[1] is None:
+        locations = get_location_dict_for_math()
+        source_coords = locations.get(biz.location_city)
+
+    # Use the haversine method directly since we have both pairs of coordinates
+    if source_coords and dest_coords:
+        dist = DistanceService.haversine(source_coords, dest_coords)
+        cost = PricingService.calculate_shipping_cost(dist, weight)
+    else:
+        print("\nERROR: Could not resolve coordinates for this route.")
+        pause()
+        return
+    
+    print(f"\n  ┌─────────────────────────────┐")
+    print(f"  │      LOGISTICS QUOTE        │")
+    print(f"  └─────────────────────────────┘")
+    print(f"  Route    : {biz.location_city} → {dest_city}")
+    print(f"  Distance : {dist:.2f} km")
+    print(f"  Weight   : {weight:.2f} kg")
+    print(f"  Cost     : ${cost:.2f}")
+    confirm = ask_non_empty("\nConfirm registration? (y/n): ").lower()
 
     if confirm == 'y':
-        new_pkg = create_package(biz_id, user_id, biz.location_city, dest, weight, desc, cost)
-        print(f"Success! Tracking ID: {new_pkg.package_id}")
+        new_pkg = create_package(biz_id, user_id, biz.location_city, dest_city, weight, desc, cost, dest_lat, dest_lon)
+        print(f"\n  Package registered! Tracking ID: #{new_pkg.package_id}")
 
 def _list_biz_packages():
     state = load_state()
@@ -61,9 +92,11 @@ def _list_biz_packages():
         print("\nNo packages found for this business.")
         return
     
-    print("\nYour Packages:")
+    print(f"\n{'ID':<5} {'Description':<20} {'Route':<30} {'Weight':>7} {'Cost':>9} {'Status'}")
+    print("-" * 80)
     for p in pkgs:
-        print(f"ID {p.package_id}: {p.description} -> {p.destination_city} | Status: {p.current_location}")
+        route = f"{p.source_city} → {p.destination_city}"
+        print(f"{p.package_id:<5} {p.description:<20} {route:<30} {p.weight:>6.1f}kg ${p.shipping_cost:>7.2f}  {p.current_location}")
 
 def _list_user_packages():
     state = load_state()
@@ -73,10 +106,12 @@ def _list_user_packages():
     if not pkgs:
         print("\nNo packages found for this user.")
         return
-    
-    print("\nYour Packages:")
+
+    print(f"\n{'ID':<5} {'Description':<20} {'Route':<30} {'Weight':>7} {'Cost':>9} {'Status'}")
+    print("-" * 80)
     for p in pkgs:
-        print(f"ID {p.package_id}: {p.description} -> {p.destination_city} | Status: {p.current_location}")
+        route = f"{p.source_city} → {p.destination_city}"
+        print(f"{p.package_id:<5} {p.description:<20} {route:<30} {p.weight:>6.1f}kg ${p.shipping_cost:>7.2f}  {p.current_location}")
     
 def _print_active_info():
     biz = _get_active_business()

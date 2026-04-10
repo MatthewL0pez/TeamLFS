@@ -24,6 +24,9 @@ class UserProfile:
 
         # keeping billing_info as a simple string for now
         self.billing_info = billing_info    # Billing info will be used as conditional to check: (if invalid/no billing info -> do not allow package creation)
+        self.role = None
+        self.status = "Inactive"
+        self.section = None
 
     def to_dict(self):
         return {
@@ -33,12 +36,15 @@ class UserProfile:
             "last_name": self.last_name,
             "email": self.email,
             "phone": self.phone,
-            "billing_info": self.billing_info
+            "billing_info": self.billing_info,
+            "role": self.role,
+            "status": self.status,
+            "section": self.section
         }
 
     @staticmethod
     def from_dict(d):
-        return UserProfile(
+        user = UserProfile(
             first_name=d.get("first_name", ""),
             last_name=d.get("last_name", ""),
             email=d.get("email", ""),
@@ -47,6 +53,10 @@ class UserProfile:
             business_id=d.get("business_id", None),
             user_id=d.get("user_id", None)
         )
+        user.role = d.get("role", None)
+        user.status = d.get("status", "Inactive")
+        user.section = d.get("section", None)
+        return user
 
     def belongs_to_business(self, business_id):
         return self.business_id == business_id
@@ -56,6 +66,6 @@ class UserProfile:
 # You should only create a user after a business exists.
 #
 #   selected_business_id = 1
-#   u = UserProfile("Matthew", "Lopez", "matthewlopez@email.com", "310-255-1234", "VISA 1111..."", selected_business_id)
+#   u = UserProfile("Matthew", "Lopez", "matthewlopez@email.com", "310-255-1234", "VISA 1111...", selected_business_id)
 #   u.user_id = 1                   # storage assigns later
 #   print(u.to_dict())

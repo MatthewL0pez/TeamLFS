@@ -1,5 +1,5 @@
 {
-  "next_user_id": 2,
+  "next_user_id": 3,
   "users": [
     {
       "user_id": 1,
@@ -9,6 +9,18 @@
       "email": "m@email.com",
       "phone": "555",
       "billing_info": "VISA 1111"
+    },
+    {
+      "user_id": 2,
+      "business_id": 11,
+      "first_name": "Demo",
+      "last_name": "User",
+      "email": "presentation.demo@email.com",
+      "phone": "555-0101",
+      "billing_info": "VISA DEMO 1111",
+      "role": null,
+      "status": "Inactive",
+      "section": null
     }
   ]
 }

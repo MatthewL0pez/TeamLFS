@@ -1,10 +1,106 @@
 {
-  "next_business_id": 2,
+  "next_business_id": 12,
   "businesses": [
     {
       "business_id": 1,
-      "business_name": "Test Biz",
-      "location_city": "Long Beach"
+      "business_name": "Los Angeles Hub",
+      "location_city": "Los Angeles, USA",
+      "employees": [],
+      "sections": {},
+      "total_packages": 0
+    },
+    {
+      "business_id": 2,
+      "business_name": "New York Hub",
+      "location_city": "New York City, USA",
+      "employees": [],
+      "sections": {},
+      "total_packages": 0
+    },
+    {
+      "business_id": 3,
+      "business_name": "Toronto Hub",
+      "location_city": "Toronto, CAN",
+      "employees": [],
+      "sections": {},
+      "total_packages": 0
+    },
+    {
+      "business_id": 4,
+      "business_name": "London Hub",
+      "location_city": "London, ENG",
+      "employees": [],
+      "sections": {},
+      "total_packages": 0
+    },
+    {
+      "business_id": 5,
+      "business_name": "Paris Hub",
+      "location_city": "Paris, FRA",
+      "employees": [],
+      "sections": {},
+      "total_packages": 0
+    },
+    {
+      "business_id": 6,
+      "business_name": "Berlin Hub",
+      "location_city": "Berlin, GER",
+      "employees": [],
+      "sections": {},
+      "total_packages": 0
+    },
+    {
+      "business_id": 7,
+      "business_name": "Rome Hub",
+      "location_city": "Rome, ITA",
+      "employees": [],
+      "sections": {},
+      "total_packages": 0
+    },
+    {
+      "business_id": 8,
+      "business_name": "Dubai Hub",
+      "location_city": "Dubai, UAE",
+      "employees": [],
+      "sections": {},
+      "total_packages": 0
+    },
+    {
+      "business_id": 9,
+      "business_name": "Tokyo Hub",
+      "location_city": "Tokyo, JAP",
+      "latitude": null,
+      "longitude": null,
+      "employees": [
+        "24658"
+      ],
+      "sections": {},
+      "total_packages": 0
+    },
+    {
+      "business_id": 10,
+      "business_name": "Sydney Hub",
+      "location_city": "Sydney, AUS",
+      "employees": [],
+      "sections": {},
+      "total_packages": 0
+    },
+    {
+      "business_id": 11,
+      "business_name": "Presentation Demo Shipping",
+      "location_city": "Los Angeles",
+      "latitude": 34.0565,
+      "longitude": -118.2488,
+      "employees": [
+        2
+      ],
+      "sections": {
+        "Receiving": [],
+        "Shipping": [
+          "2"
+        ]
+      },
+      "total_packages": 1
     }
   ]
 }
