@@ -6,6 +6,7 @@ from tracker_app.service.location_service import list_city_names, get_location_d
 from tracker_app.app.app_state import load_state
 from services.distance_service import DistanceService
 from services.pricing_service import PricingService
+from services.finance_service import FinanceService
 
 def _register_package():
     state = load_state()
@@ -46,6 +47,7 @@ def _register_package():
         dest_city = choice
         locations = get_location_dict_for_math()
         dest_coords = locations.get(dest_city)
+        dest_lat, dest_lon = dest_coords
 
     # 2. Package Details
     desc = ask_non_empty("Package description: ")
@@ -80,7 +82,7 @@ def _register_package():
     confirm = ask_non_empty("\nConfirm registration? (y/n): ").lower()
 
     if confirm == 'y':
-        new_pkg = create_package(biz_id, user_id, biz.location_city, dest_city, weight, desc, cost, dest_lat, dest_lon)
+        new_pkg = create_package(biz_id, user_id, biz.location_city, dest_city, weight, desc, cost, dest_lat, dest_lon, dist)
         print(f"\n  Package registered! Tracking ID: #{new_pkg.package_id}")
 
 def _list_biz_packages():
@@ -112,7 +114,47 @@ def _list_user_packages():
     for p in pkgs:
         route = f"{p.source_city} → {p.destination_city}"
         print(f"{p.package_id:<5} {p.description:<20} {route:<30} {p.weight:>6.1f}kg ${p.shipping_cost:>7.2f}  {p.current_location}")
+
+def _view_financial_report():
+    state = load_state()
+    biz_id = state.get("active_business_id")
+    user_id = state.get("active_user_id")
+
+    biz = _get_active_business()
+    user = _get_active_user()
+
+    biz_pkgs = get_packages_by_business(biz_id)
+    user_pkgs = get_packages_by_user(user_id)
     
+    biz_report = FinanceService.calculate_business_report(biz_pkgs)
+    user_report = FinanceService.calculate_user_expenditures(user_pkgs)
+
+    print(f"\n  ┌─────────────────────────────┐")
+    print(f"  │      FINANCIAL REPORT       │")
+    print(f"  └─────────────────────────────┘")
+    
+    if biz_report:
+        print(f"\n [BUSINESS: {biz.business_name} (ID {biz.business_id})]")
+        print(f"  Packages Processed  : {biz_report['package_count']}")
+        print(f"  Total Volume        : {biz_report['total_weight']:.2f} kg")
+        print(f"  Gross Revenue       : ${biz_report['revenue']:.2f}")
+        print(f"  Operating Costs     : -${biz_report['expenses']:.2f}")
+        print(f"  -------------------------------")
+        print(f"  NET PROFIT          : ${biz_report['profit']:.2f}")
+        print(f"  Profit Margin       : {biz_report['margin']:.1f}%")
+        print(f"  Avg Package Price   : ${biz_report['avg_pkg_price']:.2f}")
+        print("\n" + "="*42)
+    else:
+        print(f"\n [BUSINESS: {biz.business_name} (ID {biz.business_id})]")
+        print("  No financial data available yet.")
+        print("\n" + "="*42)
+    
+    if user_report:
+        print(f"\n [USER: {user.first_name} {user.last_name} (ID {user.user_id})]")
+        print(f"  Lifetime Spent      : ${user_report['total_spent']:.2f}")
+        print(f"  Packages Registered : {user_report['package_count']}")
+        print(f"  Avg Package Cost    : ${user_report['avg_cost_per_pkg']:.2f}")
+
 def _print_active_info():
     biz = _get_active_business()
     user = _get_active_user()
@@ -150,9 +192,10 @@ def run_package_menu():
         print("\n1) View All Business Packages")
         print("2) View My Packages")
         print("3) Register New Package")
+        print("4) View Financial Report")
         print("0) Back")
 
-        choice = ask_int("\nChoice: ", min_value=0, max_value=3)
+        choice = ask_int("\nChoice: ", min_value=0, max_value=4)
         if choice == 1:
             _list_biz_packages()
             pause()
@@ -161,6 +204,9 @@ def run_package_menu():
             pause()
         elif choice == 3:
             _register_package()
+            pause()
+        elif choice == 4:
+            _view_financial_report()
             pause()
         elif choice == 0:
             break

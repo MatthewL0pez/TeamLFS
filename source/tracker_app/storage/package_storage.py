@@ -23,7 +23,27 @@ def get_packages_by_user(user_id):
     db = _load_db()
     return [Package.from_dict(p) for p in db["packages"] if p.get("user_id") == user_id]
 
-def create_package(business_id, user_id, source, destination, weight, description, cost, d_lat=None, d_lon=None):
+def get_package_by_id(package_id):
+    """
+    Finds and returns a Package object by its ID.
+    Returns None if the ID does not exist.
+    """
+    try:
+        target_id = int(package_id)
+    except (ValueError, TypeError):
+        return None
+
+    for pkg in list_all_packages():
+        if pkg.package_id == target_id:
+            return pkg
+
+    return None
+
+def list_all_packages():
+    db = _load_db()
+    return [Package.from_dict(p) for p in db.get("packages", [])]
+
+def create_package(business_id, user_id, source, destination, weight, description, cost, d_lat=None, d_lon=None, dist_km=0.0):
     db = _load_db()
     new_id = db["next_package_id"]
 
@@ -37,7 +57,8 @@ def create_package(business_id, user_id, source, destination, weight, descriptio
         shipping_cost=cost,
         package_id=new_id,
         dest_lat=d_lat,
-        dest_lon=d_lon
+        dest_lon=d_lon,
+        distance_km=dist_km
     )
 
     db["packages"].append(pkg.to_dict())
