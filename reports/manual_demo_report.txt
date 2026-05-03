@@ -1,0 +1,102 @@
+
+==============================================================================
+TEAM LFS TRACKING PROGRAM - BUSINESS/USER INPUT TEST DEMO
+==============================================================================
+This demo runs 5 different business and user creation scenarios.
+Each test case shows input values and the output produced by the program.
+
+------------------------------------------------------------------------------
+TEST CASE 1 - Retail Store Business
+------------------------------------------------------------------------------
+Business name input         : Sunset Retail
+Business city input         : Los Angeles
+Business result             : Created new business
+Business ID                 : 15
+User first name             : Maria
+User last name              : Lopez
+User email                  : maria.sunset@email.com
+User phone                  : 555-1001
+User billing                : Visa 1111
+User result                 : Created new user
+User ID                     : 8
+Linked business ID          : 15
+Package description         : Clothing Shipment
+Package weight              : 2.0 kg
+Destination city            : London
+Distance                    : 8755.52 km
+Shipping cost               : $90.56
+Package ID                  : 10
+
+------------------------------------------------------------------------------
+TEST CASE 2 - Warehouse Business
+------------------------------------------------------------------------------
+Business name input         : Global Storage Hub
+Business city input         : London
+Business result             : Created new business
+Business ID                 : 16
+User first name             : David
+User last name              : Nguyen
+User email                  : david.global@email.com
+User phone                  : 555-1002
+User billing                : Mastercard 2222
+User result                 : Created new user
+User ID                     : 9
+Linked business ID          : 16
+Package description         : Storage Parts
+Package weight              : 6.5 kg
+Destination city            : Tokyo
+Distance                    : 9562.51 km
+Shipping cost               : $99.75
+Package ID                  : 11
+
+------------------------------------------------------------------------------
+TEST CASE 3 - Tech Office Business
+------------------------------------------------------------------------------
+Business name input         : NextByte Tech
+Business city input         : Tokyo
+Business result             : Created new business
+Business ID                 : 17
+User first name             : Emily
+User last name              : Chen
+User email                  : emily.nextbyte@email.com
+User phone                  : 555-1003
+User billing                : Amex 3333
+User result                 : Created new user
+User ID                     : 10
+Linked business ID          : 17
+Package description         : Computer Equipment
+Package weight              : 4.2 kg
+Destination city            : Los Angeles
+Distance                    : 8809.97 km
+Shipping cost               : $91.65
+Package ID                  : 12
+
+------------------------------------------------------------------------------
+TEST CASE 5 - Medical Supply Business
+------------------------------------------------------------------------------
+Business name input         : CareBridge Supply
+Business city input         : Sydney
+Business result             : Created new business
+Business ID                 : 18
+User first name             : Ava
+User last name              : Patel
+User email                  : ava.carebridge@email.com
+User phone                  : 555-1005
+User billing                : Discover 5555
+User result                 : Created new user
+User ID                     : 11
+Linked business ID          : 18
+Package description         : Medical Equipment
+Package weight              : 5.3 kg
+Destination city            : Tokyo
+Distance                    : 7823.40 km
+Shipping cost               : $82.06
+Package ID                  : 13
+
+==============================================================================
+FINAL SUMMARY
+==============================================================================
+Last active business ID     : 18
+Last active user ID         : 11
+Last business package count : 1
+Total test cases run        : 4

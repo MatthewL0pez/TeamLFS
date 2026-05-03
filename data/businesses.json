@@ -1,5 +1,5 @@
 {
-  "next_business_id": 12,
+  "next_business_id": 20,
   "businesses": [
     {
       "business_id": 1,
@@ -92,15 +92,118 @@
       "latitude": 34.0565,
       "longitude": -118.2488,
       "employees": [
-        2
+        2,
+        "14",
+        "115"
       ],
       "sections": {
-        "Receiving": [],
+        "Receiving": [
+          "2"
+        ],
         "Shipping": [
           "2"
-        ]
+        ],
+        "New Section": []
       },
-      "total_packages": 1
+      "total_packages": 2
+    },
+    {
+      "business_id": 12,
+      "business_name": "Ex 12",
+      "location_city": "Toronto",
+      "latitude": 43.6506,
+      "longitude": -79.3858,
+      "employees": [],
+      "sections": {},
+      "total_packages": 0
+    },
+    {
+      "business_id": 13,
+      "business_name": "CustomLoc",
+      "location_city": "Riverside",
+      "latitude": 34.05,
+      "longitude": -118.24,
+      "employees": [
+        "6",
+        "222"
+      ],
+      "sections": {
+        "Shipping": [],
+        "Receiving": [
+          "8"
+        ],
+        "Delivering": [
+          "7"
+        ],
+        "New Sect": []
+      },
+      "total_packages": 2
+    },
+    {
+      "business_id": 14,
+      "business_name": "New Pack",
+      "location_city": "Detroit",
+      "latitude": 42.09,
+      "longitude": -98.72,
+      "employees": [],
+      "sections": {},
+      "total_packages": 0
+    },
+    {
+      "business_id": 15,
+      "business_name": "Sunset Retail",
+      "location_city": "Los Angeles",
+      "latitude": 34.0565,
+      "longitude": -118.2488,
+      "employees": [],
+      "sections": {},
+      "total_packages": 0
+    },
+    {
+      "business_id": 16,
+      "business_name": "Global Storage Hub",
+      "location_city": "London",
+      "latitude": 51.5081,
+      "longitude": -0.1259,
+      "employees": [],
+      "sections": {},
+      "total_packages": 0
+    },
+    {
+      "business_id": 17,
+      "business_name": "NextByte Tech",
+      "location_city": "Tokyo",
+      "latitude": 35.6776,
+      "longitude": 139.7667,
+      "employees": [],
+      "sections": {},
+      "total_packages": 0
+    },
+    {
+      "business_id": 18,
+      "business_name": "CareBridge Supply",
+      "location_city": "Sydney",
+      "latitude": -33.8622,
+      "longitude": 151.2093,
+      "employees": [],
+      "sections": {
+        "\u0018": []
+      },
+      "total_packages": 0
+    },
+    {
+      "business_id": 19,
+      "business_name": "Business Shipping .Co",
+      "location_city": "Los Angeles",
+      "latitude": 34.0565,
+      "longitude": -118.2488,
+      "employees": [
+        "EMP101"
+      ],
+      "sections": {
+        "Receiving": []
+      },
+      "total_packages": 0
     }
   ]
 }

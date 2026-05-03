@@ -1,5 +1,5 @@
 {
-  "next_package_id": 3,
+  "next_package_id": 14,
   "packages": [
     {
       "package_id": 1,
@@ -10,7 +10,8 @@
       "destination_city": "Tokyo",
       "weight": 2.5,
       "shipping_cost": 155.4,
-      "current_location": "Processing"
+      "current_location": "Processing",
+      "time_created": "2026-04-20T01:30:00"
     },
     {
       "package_id": 2,
@@ -21,7 +22,163 @@
       "weight": 4.5,
       "description": "Presentation Sample Package",
       "shipping_cost": 91.72,
-      "current_location": "Processing"
+      "current_location": "Processing",
+      "time_created": "2026-04-20T01:32:00"
+    },
+    {
+      "package_id": 3,
+      "business_id": 11,
+      "user_id": 2,
+      "source_city": "Los Angeles",
+      "destination_city": "New York City",
+      "weight": 3.0,
+      "description": "Multimeter",
+      "shipping_cost": 42.61,
+      "current_location": "Processing",
+      "time_created": "2026-04-20T01:35:00"
+    },
+    {
+      "package_id": 4,
+      "business_id": 12,
+      "user_id": 4,
+      "source_city": "Toronto",
+      "destination_city": "London",
+      "weight": 1.0,
+      "description": "Hoodie",
+      "shipping_cost": 59.88,
+      "current_location": "Processing",
+      "time_created": "2026-04-20T01:38:00"
+    },
+    {
+      "package_id": 5,
+      "business_id": 13,
+      "user_id": 5,
+      "source_city": "Riverside",
+      "destination_city": "Los Angeles",
+      "weight": 5.0,
+      "description": "Rocks",
+      "shipping_cost": 3.76,
+      "current_location": "Processing",
+      "time_created": "2026-04-20T01:40:00"
+    },
+    {
+      "package_id": 6,
+      "business_id": 13,
+      "user_id": 5,
+      "source_city": "Riverside",
+      "destination_city": "Mi Casa",
+      "weight": 11.0,
+      "description": "Table",
+      "shipping_cost": 8.4,
+      "current_location": "Processing",
+      "dest_lat": 35.0,
+      "dest_lon": -115.0,
+      "time_created": "2026-04-20T01:42:00"
+    },
+    {
+      "package_id": 7,
+      "business_id": 13,
+      "user_id": 6,
+      "source_city": "Riverside",
+      "destination_city": "Quahog",
+      "weight": 20.0,
+      "description": "Wheelchair",
+      "shipping_cost": 54.48,
+      "current_location": "Processing",
+      "dest_lat": 62.35,
+      "dest_lon": -67.67,
+      "distance_km": 4698.297308279451,
+      "time_created": "2026-04-20T01:44:00"
+    },
+    {
+      "package_id": 8,
+      "business_id": 13,
+      "user_id": 7,
+      "source_city": "Riverside",
+      "destination_city": "London",
+      "weight": 2.3,
+      "description": "Bacon",
+      "shipping_cost": 90.63,
+      "current_location": "Processing",
+      "dest_lat": null,
+      "dest_lon": null,
+      "distance_km": 8755.660322503858,
+      "time_created": "2026-04-20T01:59:50"
+    },
+    {
+      "package_id": 9,
+      "business_id": 13,
+      "user_id": 7,
+      "source_city": "Riverside",
+      "destination_city": "Berlin",
+      "weight": 7.23,
+      "description": "Axe",
+      "shipping_cost": 97.4,
+      "current_location": "Processing",
+      "dest_lat": 52.516,
+      "dest_lon": 13.3967,
+      "distance_km": 9309.735019558395,
+      "time_created": "2026-04-20T01:53:50.887589"
+    },
+    {
+      "package_id": 10,
+      "business_id": 15,
+      "user_id": 8,
+      "source_city": "Los Angeles",
+      "destination_city": "London",
+      "weight": 2.0,
+      "description": "Clothing Shipment",
+      "shipping_cost": 90.56,
+      "current_location": "Processing",
+      "dest_lat": null,
+      "dest_lon": null,
+      "distance_km": 0.0,
+      "time_created": "2026-04-20T17:27:02.371818"
+    },
+    {
+      "package_id": 11,
+      "business_id": 16,
+      "user_id": 9,
+      "source_city": "London",
+      "destination_city": "Tokyo",
+      "weight": 6.5,
+      "description": "Storage Parts",
+      "shipping_cost": 99.75,
+      "current_location": "Processing",
+      "dest_lat": null,
+      "dest_lon": null,
+      "distance_km": 0.0,
+      "time_created": "2026-04-20T17:27:02.374511"
+    },
+    {
+      "package_id": 12,
+      "business_id": 17,
+      "user_id": 10,
+      "source_city": "Tokyo",
+      "destination_city": "Los Angeles",
+      "weight": 4.2,
+      "description": "Computer Equipment",
+      "shipping_cost": 91.65,
+      "current_location": "Processing",
+      "dest_lat": null,
+      "dest_lon": null,
+      "distance_km": 0.0,
+      "time_created": "2026-04-20T17:27:02.377358"
+    },
+    {
+      "package_id": 13,
+      "business_id": 18,
+      "user_id": 11,
+      "source_city": "Sydney",
+      "destination_city": "Tokyo",
+      "weight": 5.3,
+      "description": "Medical Equipment",
+      "shipping_cost": 82.06,
+      "current_location": "Processing",
+      "dest_lat": null,
+      "dest_lon": null,
+      "distance_km": 0.0,
+      "time_created": "2026-04-20T17:27:02.380175"
     }
   ]
 }

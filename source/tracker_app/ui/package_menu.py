@@ -112,6 +112,7 @@ def _list_user_packages():
     print(f"\n{'ID':<5} {'Description':<20} {'Route':<30} {'Weight':>7} {'Cost':>9} {'Status'}")
     print("-" * 80)
     for p in pkgs:
+        p.update_status()
         route = f"{p.source_city} → {p.destination_city}"
         print(f"{p.package_id:<5} {p.description:<20} {route:<30} {p.weight:>6.1f}kg ${p.shipping_cost:>7.2f}  {p.current_location}")
 
@@ -154,7 +155,7 @@ def _view_financial_report():
         print(f"  Lifetime Spent      : ${user_report['total_spent']:.2f}")
         print(f"  Packages Registered : {user_report['package_count']}")
         print(f"  Avg Package Cost    : ${user_report['avg_cost_per_pkg']:.2f}")
-
+    
 def _print_active_info():
     biz = _get_active_business()
     user = _get_active_user()
